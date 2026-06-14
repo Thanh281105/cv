@@ -1,0 +1,48 @@
+dataset:
+  id: thanhhoangnvbg/viground-contrast-data
+  revision: eb7ddb1069de0c6e7a6277cf46b3d94d0c9cd9ee
+model:
+  id: nvidia/LocateAnything-3B
+  revision: c32291ca5e996f5a7a485845b4f57a233936bba0
+seed: 42
+training:
+  epochs: 1
+  per_device_train_batch_size: 1
+  gradient_accumulation_steps: 8
+  effective_batch_size: 8
+  learning_rate: 1.0e-4
+  weight_decay: 0.01
+  warmup_ratio: 0.05
+  scheduler: cosine
+  max_grad_norm: 1.0
+  dataloader_num_workers: 4
+  data_augmentation: false
+  repeat_time: 1.0
+  save_steps_full: 125
+sequence:
+  max_seq_length: 4096
+  max_num_tokens_per_sample: 4096
+  max_num_tokens: 4096
+  packing_buffer_size: 8
+locateanything:
+  attn_implementation: sdpa
+  causal_attn: false
+  block_size: 6
+  grad_checkpoint: true
+  use_magi_attention: false
+lora:
+  target_modules:
+    - q_proj
+    - k_proj
+    - v_proj
+    - o_proj
+  r: 8
+  alpha: 16
+  dropout: 0.05
+  bias: none
+vertex:
+  machine_type: g2-standard-8
+  accelerator_type: NVIDIA_L4
+  accelerator_count: 1
+  replica_count: 1
+
