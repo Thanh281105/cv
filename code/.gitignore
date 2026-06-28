@@ -1,0 +1,36 @@
+# Ignore Hugging Face cache and extracted images
+.hf_cache/
+.hf_cache/**/images_extracted/
+
+# Ignore generated artifacts and results
+artifacts/
+results/
+
+# Common Python ignores
+__pycache__/
+*.py[cod]
+*.so
+
+# Virtual environments
+.env
+.venv/
+venv/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Editor/OS metadata
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Logs and temporary files
+*.log
+*.tmp
+
+# Optional: ignore dataset archives or large raw images placed in repo root
+data/
+raw_images/
+
+# Keep this file tracked
+!.gitignore
